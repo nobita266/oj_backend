@@ -22,6 +22,9 @@ const routes = express.Router();
 app.use(routes);
 DBConnection();
 app.use("/api/auth", authRoutes);
+app.get("/testride", (req, res) => {
+  return res.status(200).json({ hi: "i m hit" });
+});
 app.post("/run", async (req, res) => {
   // console.log(req.body);
   const { language = "cpp", code } = req.body;
@@ -35,7 +38,7 @@ app.post("/run", async (req, res) => {
 
     //we need to run the file and send the respose
     const output = await executeCpp(filepath);
-    return res.status(400).json({ output });
+    return res.status(200).json({ output });
   } catch (err) {
     return res.status(500).json({ err });
   }
