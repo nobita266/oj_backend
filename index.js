@@ -23,6 +23,7 @@ app.use(routes);
 DBConnection();
 app.use("/api/auth", authRoutes);
 app.get("/testride", (req, res) => {
+  console.log(res);
   return res.status(200).json({ hi: "i m hit" });
 });
 app.post("/run", async (req, res) => {
